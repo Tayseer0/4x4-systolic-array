@@ -34,4 +34,14 @@ def main():
             for i in range(args.N):
                 for k in range(4):
                     fa.write(f"{(A_q[i,k] & 0xFFFF):04x}\n")
-        with open(os.path.join(args.outdir, f"B_{args.N}.hex"),_
+        with open(os.path.join(args.outdir, f"B_{args.N}.hex"), "w") as fb:
+            for k in range(4):
+                for j in range(args.N):
+                    fb.write(f"{(B_q[k,j] & 0xFFFF):04x}\n")
+        with open(os.path.join(args.outdir, f"C_{args.N}_gold.hex"), "w") as fc:
+            for i in range(args.N):
+                for j in range(args.N):
+                    fc.write(f"{(C_q[i,j] & 0xFFFF):04x}\n")
+
+if __name__ == "__main__":
+    main()
